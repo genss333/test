@@ -1,0 +1,1 @@
+osrm-routed.exe -p 5000 thailand-latest.osrm

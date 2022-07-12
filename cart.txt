@@ -1,0 +1,31 @@
+<c:forEach items="${cart}" var="cart">
+            	<tr>
+                    <td>
+                        <div class="row gx-1 gx-lg-1 row-cols-2 row-cols-md-2 row-cols-xl-3 row-cols-xxl-3">
+                            <div class="col gx-md-3">
+                                <div class="h-100" style="max-width: 10rem;">
+                                    <a href="/detail?pid=${c.getId()}&&col=${c.getCollection()} &&brand=${c.getBrand()}">
+                                    	<img src="${c.getImage()}" class="card-img-top" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col gx-md-3">
+                                <br>
+                                <p class="product-title" style="color:black;">${c.getTitle()}</p>
+                                <span style="color:black;">Price: <fmt:formatNumber value="${c.getPrice()}" type="number" /> Bath</span><br>
+                                <span style="color:black;">Total Price: <fmt:formatNumber value="${ c.getPrice() * c.getQuantity()}" type="number" /> Bath</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                    
+                        <p style="padding-top: 3rem;padding-left: 1rem;">
+	                        <a href="/update-cart?action=inc&&id=${c.getId()}"><i class="bi bi-plus"></i></a>
+	                            ${c.getQuantity()}
+	                         <a href="/minus-cart?action=dec&&id=${c.getId()}"><i class="bi bi-dash"></i></a>
+                        </p>
+                    </td>
+                    <td style="padding-top: 3.5rem;padding-left: 2rem;"><a href="/checkout?id=${c.getId()}" style="color: #000;"><i class="bi bi-bag-check-fill"></a></td>
+                    <td style="padding-top: 3.5rem;padding-left: 2rem;"><a href="remove-cart?id=${c.getId()}"><i class="bi bi-trash-fill"></i></a></td>
+                </tr>
+            </c:forEach>
